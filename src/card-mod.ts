@@ -316,10 +316,12 @@ export class CardMod extends LitElement {
 
 if (!customElements.get("card-mod")) {
   customElements.define("card-mod", CardMod);
-  console.info(
-    `%cCARD-MOD ${pjson.version} IS INSTALLED`,
-    "color: green; font-weight: bold"
+  console.groupCollapsed(
+    `%c💡 CARD-MOD ${pjson.version} IS INSTALLED 💡`,
+    'color: white; background-color: #CE3226; padding: 2px 5px; font-weight: bold; border-radius: 5px;',
   );
+  console.log('Readme:', 'https://github.com/Lint-Free-Technology/lovelace-card-mod');
+  console.groupEnd();
   window.dispatchEvent(new Event("card-mod-bootstrap"));
 }
 (async () => {

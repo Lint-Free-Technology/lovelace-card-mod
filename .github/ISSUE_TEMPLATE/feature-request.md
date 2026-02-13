@@ -2,6 +2,6 @@
 name: Feature request
 about: For suggesting new features
 title: ''
-labels: ''
+labels: 'feature request'
 assignees: ''
 ---

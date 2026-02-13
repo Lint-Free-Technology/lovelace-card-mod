@@ -1,0 +1,82 @@
+branches:
+  - master
+  - name: dev
+    prerelease: beta
+
+plugins:
+  - "@semantic-release/commit-analyzer"
+  - "@semantic-release/release-notes-generator"
+  - - "@semantic-release/changelog"
+    - changelogFile: CHANGELOG.md
+  - - "@semantic-release/npm"
+    - npmPublish: false
+  - - "@semantic-release/exec"
+    - prepareCmd: "npm run build"
+  - - "@semantic-release/git"
+    - assets:
+        - CHANGELOG.md
+        - package.json
+        - package-lock.json
+      message: "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+  - - "@semantic-release/github"
+    - assets:
+        - path: "dist/card-mod.js"
+          label: "card-mod.js"
+
+preset: conventionalcommits
+presetConfig:
+  types:
+    - type: feat
+      section: ⭐ New Features
+    - type: fix
+      section: 🐞 Bug Fixes
+    - type: perf
+      section: ⚡ Performance Improvements
+    - type: docs
+      section: 📔 Documentation
+    - type: deps
+      section: 📦 Dependency Upgrades
+    - type: chore
+      section: Chores
+      hidden: true
+    - type: refactor
+      section: ⚙️ Miscellaneous
+    - type: test
+      section: ⚙️ Miscellaneous
+    - type: build
+      section: ⚙️ Miscellaneous
+    - type: ci
+      section: ⚙️ Miscellaneous
+    - type: revert
+      section: 🐞 Bug Fixes
+    - type: style
+      section: ⚙️ Miscellaneous
+
+releaseRules:
+  - type: feat
+    scope: "major"
+    release: major
+  - type: feat
+    release: minor
+  - type: fix
+    release: patch
+  - type: docs
+    release: patch
+  - type: deps
+    release: patch
+  - type: perf
+    release: minor
+  - type: refactor
+    release: false
+  - type: chore
+    release: false
+  - type: test
+    release: false
+  - type: style
+    release: patch
+  - type: ci
+    release: false
+  - type: build
+    release: false
+  - breaking: true
+    release: major

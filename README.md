@@ -1,4 +1,4 @@
-# card-mod 5
+# card-mod
 
 Forked from [thomasloven/lovelace-card-mod](https://github.com/thomasloven/lovelace-card-mod).
 
